@@ -2,9 +2,7 @@ fastapi
 pytest
 pylint
 uvicorn[standard]
-io
 numpy
 nest_asyncio
-enum
 boto3
-urllib
+python-multipart
