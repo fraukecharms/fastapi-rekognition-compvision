@@ -1,5 +1,6 @@
-from fastapi import FastAPI
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.responses import StreamingResponse
+from fastapi.responses import FileResponse
 import uvicorn
 from lambdatest import label_function
 import boto3
@@ -30,6 +31,23 @@ async def lookup2(photo: UploadFile = File(...)):
         
     return response
     
+
+@app.post("/predict3")
+async def lookup3(photo: UploadFile = File(...)):
+    """upload image"""
+    
+    client = boto3.client("rekognition")
+
+    #response = client.detect_labels(Image={'Bytes': photo.file.read()})
+        
+    # Read image as a stream of bytes
+    image_stream = io.BytesIO(photo.file.read())
+    
+    # Start the stream from the beginning (position zero)
+    image_stream.seek(0)
+        
+    return StreamingResponse(image_stream, media_type="image/jpeg")    
+
 
 if __name__ == '__main__':
     uvicorn.run(app, port=8080, host='0.0.0.0')
