@@ -19,4 +19,3 @@ def label_function(bucket, name):
     print(f"I found these labels {labels}")
     # was return labels
     return response
-
