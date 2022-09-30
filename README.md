@@ -25,7 +25,7 @@ Note this is your container name use:  `docker image ls` to find:
 
 
 ##
-'python main.py'
+`python main.py`
 
 
 ## Learning Material
