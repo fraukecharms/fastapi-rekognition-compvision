@@ -24,6 +24,10 @@ Note this is your container name use:  `docker image ls` to find:
 ![fastapi-swagger](https://user-images.githubusercontent.com/58792/131587676-b22c5877-0e75-49e7-a1a6-b580ba922e67.png)
 
 
+##
+'python main.py'
+
+
 ## Learning Material
 
 * Uni Michigan, more up to date version than the stanford course, great assignments
