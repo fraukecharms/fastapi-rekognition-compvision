@@ -26,9 +26,8 @@ Note this is your container name use:  `docker image ls` to find:
 
 ##
 `python main.py`
-
 <script src="https://gist.github.com/fraukecharms/573d09f665876e1cf14a6089279e46d2.js"></script>
-
+![gist](https://gist.github.com/fraukecharms/573d09f665876e1cf14a6089279e46d2)
 ## Learning Material
 
 * Uni Michigan, more up to date version than the stanford course, great assignments
