@@ -3,7 +3,6 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import StreamingResponse
 #from fastapi.responses import FileResponse
 import uvicorn
-from lambdatest import label_function
 import boto3
 import io
 
