@@ -15,12 +15,6 @@ async def root():
     return {"message": "Hello there ... append '/docs' to url"}
 
 
-@app.post("/predict1")
-async def lookup1(name: str):
-    """label image in s3 bucket"""
-    bucket = "compvision-lambdatrigger-bucket"
-
-    return label_function(bucket, name)
 
 
 @app.post("/predict2")
