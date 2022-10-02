@@ -2,7 +2,16 @@
 
 
 # fastapi
-Demo of FastAPI + AWS App Runner
+FastAPI + AWS App Runner
+
+
+## Instructions for docker
+
+`docker build .`
+
+`docker build --tag visiondemo .`
+
+`docker run -p 127.0.0.1:8080:8080 visiondemo`
 
 
 ## run docker
