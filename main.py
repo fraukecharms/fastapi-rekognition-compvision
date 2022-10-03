@@ -1,10 +1,15 @@
 from fastapi import FastAPI, UploadFile, File
-#from fastapi import HTTPException
+
+# from fastapi import HTTPException
 from fastapi.responses import StreamingResponse
-#from fastapi.responses import FileResponse
+
+# from fastapi.responses import FileResponse
 import uvicorn
 import boto3
 import io
+
+# from PIL import Image
+# from PIL import Image, ImageDraw, ExifTags, ImageColor
 
 app = FastAPI()
 
@@ -14,6 +19,17 @@ async def root():
     return {"message": "Hello there ... append '/docs' to url"}
 
 
+# @app.post("/predict1")
+def lookup1():
+
+    client = boto3.client("rekognition")
+
+    with open("testpic/pug.png", "rb") as photo:
+        response = client.detect_labels(Image={"Bytes": photo.read()})
+
+    print(response.keys())
+
+    return response
 
 
 @app.post("/predict2")
@@ -23,6 +39,7 @@ async def lookup2(photo: UploadFile = File(...)):
     client = boto3.client("rekognition")
 
     response = client.detect_labels(Image={"Bytes": photo.file.read()})
+    print(response.keys())
 
     return response
 
