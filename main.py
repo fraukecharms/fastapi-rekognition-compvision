@@ -19,8 +19,7 @@ async def root():
     return {"message": "Hello there ... append '/docs' to url"}
 
 
-# @app.post("/predict1")
-def lookup1():
+def lookuptest():
 
     client = boto3.client("rekognition")
 
@@ -32,6 +31,46 @@ def lookup1():
     return response
 
 
+def lookuptest2():
+
+    client = boto3.client("rekognition")
+
+    # with open("testpic/pug.png", "rb") as photo:
+
+    photo = open("testpic/pug.png", "rb")
+    response = client.detect_labels(Image={"Bytes": photo.read()})
+
+    # print(response.keys())
+
+    print("Detected labels")
+    print()
+    for label in response["Labels"]:
+        print("Label: " + label["Name"])
+        print("Confidence: " + str(label["Confidence"]))
+        print("Instances:")
+        for instance in label["Instances"]:
+            print("  Bounding box")
+            print("    Top: " + str(instance["BoundingBox"]["Top"]))
+            print("    Left: " + str(instance["BoundingBox"]["Left"]))
+            print("    Width: " + str(instance["BoundingBox"]["Width"]))
+            print("    Height: " + str(instance["BoundingBox"]["Height"]))
+            print("  Confidence: " + str(instance["Confidence"]))
+            print()
+
+        print("Parents:")
+        for parent in label["Parents"]:
+            print("   " + parent["Name"])
+        print("----------")
+        print()
+
+    image_stream = io.BytesIO(photo.read())
+
+    # Start the stream from the beginning (position zero)
+    image_stream.seek(0)
+
+    return StreamingResponse(image_stream, media_type="image/jpeg")
+
+
 @app.post("/predict2")
 async def lookup2(photo: UploadFile = File(...)):
     """upload image"""
@@ -39,7 +78,6 @@ async def lookup2(photo: UploadFile = File(...)):
     client = boto3.client("rekognition")
 
     response = client.detect_labels(Image={"Bytes": photo.file.read()})
-    print(response.keys())
 
     return response
 
