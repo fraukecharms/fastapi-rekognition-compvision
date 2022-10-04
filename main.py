@@ -8,8 +8,8 @@ import uvicorn
 import boto3
 import io
 
-# from PIL import Image
-# from PIL import Image, ImageDraw, ExifTags, ImageColor
+from PIL import Image, ImageDraw
+# from PIL import ExifTags, ImageColor
 
 app = FastAPI()
 
@@ -41,6 +41,7 @@ def lookuptest2():
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     # print(response.keys())
+    boxes = []
 
     print("Detected labels")
     print()
@@ -56,7 +57,15 @@ def lookuptest2():
             print("    Height: " + str(instance["BoundingBox"]["Height"]))
             print("  Confidence: " + str(instance["Confidence"]))
             print()
-
+            
+            btop = instance["BoundingBox"]["Top"]
+            bleft = instance["BoundingBox"]["Left"]
+            bwidth = instance["BoundingBox"]["Width"]
+            bheight = instance["BoundingBox"]["Height"]
+            
+            box = (btop, bleft, bwidth, bheight)
+            boxes.append(box)
+        
         print("Parents:")
         for parent in label["Parents"]:
             print("   " + parent["Name"])
@@ -68,7 +77,27 @@ def lookuptest2():
     # Start the stream from the beginning (position zero)
     image_stream.seek(0)
 
-    return StreamingResponse(image_stream, media_type="image/jpeg")
+    return boxes
+    #return StreamingResponse(image_stream, media_type="image/jpeg")
+
+
+def lookuptest3():
+
+
+
+    #boxes = lookuptest2()
+
+    with Image.open("testpic/pug.png") as im:
+
+
+        imgWidth, imgHeight = im.size  
+        draw = ImageDraw.Draw(im) 
+        # might want to include inline matplotlib???
+        #im.show()
+    
+    print(imgWidth)
+    print(imgHeight)
+
 
 
 @app.post("/predict2")
