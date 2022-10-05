@@ -1,7 +1,7 @@
 import cv2
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
-
+from IPython.display import Image, display
 
 def detect_and_draw_box(filename, model="yolov3-tiny", confidence=0.5):
     """Detects common objects on an image and creates a new image with bounding boxes.
