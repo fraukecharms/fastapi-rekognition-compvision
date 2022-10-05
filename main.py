@@ -8,7 +8,7 @@ import uvicorn
 import boto3
 import io
 
-#from PIL import Image, ImageDraw
+# from PIL import Image, ImageDraw
 
 # from PIL import ExifTags, ImageColor
 
@@ -18,9 +18,6 @@ app = FastAPI()
 @app.get("/")
 async def root():
     return {"message": "Hello there ... append '/docs' to url"}
-
-
-
 
 
 @app.post("/predict2")
