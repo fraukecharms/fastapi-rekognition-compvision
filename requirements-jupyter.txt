@@ -1,0 +1,10 @@
+fastapi
+pytest
+pylint
+uvicorn[standard]
+numpy
+nest_asyncio
+boto3
+python-multipart
+black
+Pillow

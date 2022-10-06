@@ -2,3 +2,16 @@ source ~/.fastapi_compvision/bin/activate
 %load_ext autoreload
 %autoreload 2
 
+# for jupyter notebooks only:
+%matplotlib inline
+
+
+
+git config --global core.editor "vim"
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+
+
+
+git config --global user.email "frharms@gmail.com"
+git config --global user.name "fraukecharms"
