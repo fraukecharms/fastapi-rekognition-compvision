@@ -1,0 +1,4 @@
+source ~/.fastapi_compvision/bin/activate
+%load_ext autoreload
+%autoreload 2
+
