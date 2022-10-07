@@ -8,3 +8,6 @@ boto3
 python-multipart
 black
 Pillow
+cvlib==0.2.6
+opencv-python-headless==4.5.3.56
+tensorflow==2.7.0
