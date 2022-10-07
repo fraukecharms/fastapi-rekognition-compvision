@@ -1,5 +1,7 @@
 [![Github Actions](https://github.com/fraukecharms/fastapi_compvision/actions/workflows/main.yml/badge.svg)](https://github.com/fraukecharms/fastapi_compvision/actions/workflows/main.yml)
 
+https://codebuild.eu-west-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiZGx5M0JnZXNLL3NqcXpoN0xoZ1pLVURFT0U5Tmcwb3plQzU5NXBBVUE1Q1lpMHJxZHFtNTIya1BscU1EK1RkRlp2TnFUV0huUFkwKzBvdG56a1BGcDg0PSIsIml2UGFyYW1ldGVyU3BlYyI6Indva1F2ZlZuS3VlMGdWOEEiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=main
+
 
 # fastapi
 FastAPI + AWS App Runner
@@ -35,8 +37,8 @@ Note this is your container name use:  `docker image ls` to find:
 
 ##
 `python main.py`
-<script src="https://gist.github.com/fraukecharms/573d09f665876e1cf14a6089279e46d2.js"></script>
-![gist](https://gist.github.com/fraukecharms/573d09f665876e1cf14a6089279e46d2)
+
+
 ## Learning Material
 
 * Uni Michigan, more up to date version than the stanford course, great assignments
