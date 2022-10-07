@@ -1,8 +1,9 @@
 import boto3
 import io
 from PIL import Image, ImageDraw, ImageColor
+
 # maybe this could help?
-#from IPython.display import Image, display
+# from IPython.display import Image, display
 
 
 def lookuptest():
@@ -71,8 +72,8 @@ def lookuptest3():
 
     # boxes = lookuptest2()
 
-    #with Image.open("testpic/pug.png") as im:
-    
+    # with Image.open("testpic/pug.png") as im:
+
     im = Image.open("testpic/pug.png")
     imgWidth, imgHeight = im.size
     # draw = ImageDraw.Draw(im)
@@ -82,12 +83,10 @@ def lookuptest3():
 
     print(imgWidth)
     print(imgHeight)
-    print('test')
+    print("test")
 
 
 def drawboundingboxes():
-
-
 
     stream = io.BytesIO(s3_response["Body"].read())
     image = Image.open(stream)
@@ -98,13 +97,10 @@ def drawboundingboxes():
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
 
-
     left = imgWidth * box["Left"]
     top = imgHeight * box["Top"]
     width = imgWidth * box["Width"]
     height = imgHeight * box["Height"]
-
-
 
     points = (
         (left, top),
@@ -119,4 +115,3 @@ def drawboundingboxes():
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
 
     image.show()
-

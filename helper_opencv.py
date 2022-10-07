@@ -12,7 +12,7 @@ def detect_and_draw_box(model="yolov3", confidence=0.5):
         model (str): Either "yolov3" or "yolov3-tiny". Defaults to "yolov3-tiny".
         confidence (float, optional): Desired confidence level. Defaults to 0.5.
     """
-    filename = r'/root/fastapi_apprunner_compvision/testpic/pug.png'
+    filename = r"/root/fastapi_apprunner_compvision/testpic/pug.png"
 
     img = cv2.imread(filename)
 
@@ -32,7 +32,9 @@ def detect_and_draw_box(model="yolov3", confidence=0.5):
     output_image = draw_bbox(img, bbox, label, conf)
 
     # Save the image in the directory images_with_boxes
-    cv2.imwrite(f"/root/fastapi_apprunner_compvision/images_with_boxes/pug.png", output_image)
+    cv2.imwrite(
+        f"/root/fastapi_apprunner_compvision/images_with_boxes/pug.png", output_image
+    )
 
     # Display the image with bounding boxes
     display(Image(f"/root/fastapi_apprunner_compvision/images_with_boxes/pug.png"))
