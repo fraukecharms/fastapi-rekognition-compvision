@@ -1,7 +1,8 @@
 import cv2
 import cvlib as cv
 from cvlib.object_detection import draw_bbox
-from IPython.display import Image, display
+from IPython.display import Image as ipImage
+from IPython.display import display as ipdisplay
 
 
 def detect_and_draw_box(model="yolov3", confidence=0.5):
@@ -37,4 +38,4 @@ def detect_and_draw_box(model="yolov3", confidence=0.5):
     )
 
     # Display the image with bounding boxes
-    display(Image(f"/root/fastapi_apprunner_compvision/images_with_boxes/pug.png"))
+    ipdisplay(ipImage(f"/root/fastapi_apprunner_compvision/images_with_boxes/pug.png"))

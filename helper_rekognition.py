@@ -2,8 +2,8 @@ import boto3
 import io
 from PIL import Image, ImageDraw, ImageColor
 
-# maybe this could help?
-# from IPython.display import Image, display
+from IPython.display import Image as ipImage
+from IPython.display import display as ipdisplay
 
 
 def lookuptest():
@@ -76,10 +76,13 @@ def lookuptest3():
 
     im = Image.open("testpic/pug.png")
     imgWidth, imgHeight = im.size
-    # draw = ImageDraw.Draw(im)
-    ImageDraw.Draw(im)
+    draw = ImageDraw.Draw(im)
+    #ImageDraw.Draw(im)
     # might want to include inline matplotlib???
-    im.show()
+    ipdisplay(im)
+    
+    print('test0')
+    ipdisplay(ipImage("testpic/pug.png"))
 
     print(imgWidth)
     print(imgHeight)
@@ -88,19 +91,17 @@ def lookuptest3():
 
 def drawboundingboxes():
 
-    stream = io.BytesIO(s3_response["Body"].read())
-    image = Image.open(stream)
+    image = Image.open("testpic/pug.png")
 
-    # Call DetectFaces
     box = lookuptest2()[0]
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
 
-    left = imgWidth * box["Left"]
-    top = imgHeight * box["Top"]
-    width = imgWidth * box["Width"]
-    height = imgHeight * box["Height"]
+    left = imgWidth * box[0]
+    top = imgHeight * box[1]
+    width = imgWidth * box[2]
+    height = imgHeight * box[3]
 
     points = (
         (left, top),
@@ -115,3 +116,4 @@ def drawboundingboxes():
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
 
     image.show()
+    ipdisplay(image)
