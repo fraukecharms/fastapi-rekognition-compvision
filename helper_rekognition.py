@@ -51,7 +51,8 @@ def lookuptest2():
             bheight = instance["BoundingBox"]["Height"]
 
             box = (btop, bleft, bwidth, bheight)
-            boxes.append(box)
+            box2 = instance["BoundingBox"]
+            boxes.append(box2)
 
         print("Parents:")
         for parent in label["Parents"]:
@@ -98,10 +99,10 @@ def drawboundingboxes():
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
 
-    left = imgWidth * box[0]
-    top = imgHeight * box[1]
-    width = imgWidth * box[2]
-    height = imgHeight * box[3]
+    left = imgWidth * box['Left']
+    top = imgHeight * box['Top']
+    width = imgWidth * box['Width']
+    height = imgHeight * box['Height']
 
     points = (
         (left, top),
