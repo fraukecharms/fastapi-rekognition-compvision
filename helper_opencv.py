@@ -13,7 +13,7 @@ def detect_and_draw_box(model="yolov3", confidence=0.5):
         model (str): Either "yolov3" or "yolov3-tiny". Defaults to "yolov3-tiny".
         confidence (float, optional): Desired confidence level. Defaults to 0.5.
     """
-    filename = r"/root/fastapi_apprunner_compvision/testpic/pug.png"
+    filename = r"testpic/pic2.jpg"
 
     img = cv2.imread(filename)
 

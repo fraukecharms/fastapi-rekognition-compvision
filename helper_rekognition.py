@@ -6,11 +6,11 @@ from IPython.display import Image as ipImage
 from IPython.display import display as ipdisplay
 
 
-def lookuptest():
+def lookuptest(testpic = "testpic/pug.png"):
 
     client = boto3.client("rekognition")
 
-    with open("testpic/pug.png", "rb") as photo:
+    with open(testpic, "rb") as photo:
         response = client.detect_labels(Image={"Bytes": photo.read()})
 
     print(response.keys())
@@ -18,13 +18,13 @@ def lookuptest():
     return response
 
 
-def lookuptest2():
+def lookuptest2(testpic = "testpic/pug.png"):
 
     client = boto3.client("rekognition")
 
     # with open("testpic/pug.png", "rb") as photo:
 
-    photo = open("testpic/pug.png", "rb")
+    photo = open(testpic, "rb")
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     # print(response.keys())
@@ -90,11 +90,11 @@ def lookuptest3():
     print("test")
 
 
-def drawboundingboxes():
+def drawboundingboxes(testpic = "testpic/pug.png"):
 
-    image = Image.open("testpic/pug.png")
+    image = Image.open(testpic)
 
-    box = lookuptest2()[0]
+    box = lookuptest2(testpic = testpic)[0]
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
