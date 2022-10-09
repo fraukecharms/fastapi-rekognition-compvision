@@ -160,4 +160,3 @@ def detection_visualizer(img, idx_to_class, bbox=None, pred=None, points=None):
                 )
     # fmt: on
     plt.show()
-

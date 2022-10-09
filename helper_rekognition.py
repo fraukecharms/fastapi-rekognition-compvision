@@ -78,11 +78,11 @@ def lookuptest3():
     im = Image.open("testpic/pug.png")
     imgWidth, imgHeight = im.size
     draw = ImageDraw.Draw(im)
-    #ImageDraw.Draw(im)
+    # ImageDraw.Draw(im)
     # might want to include inline matplotlib???
     ipdisplay(im)
-    
-    print('test0')
+
+    print("test0")
     ipdisplay(ipImage("testpic/pug.png"))
 
     print(imgWidth)
@@ -99,10 +99,10 @@ def drawboundingboxes():
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
 
-    left = imgWidth * box['Left']
-    top = imgHeight * box['Top']
-    width = imgWidth * box['Width']
-    height = imgHeight * box['Height']
+    left = imgWidth * box["Left"]
+    top = imgHeight * box["Top"]
+    width = imgWidth * box["Width"]
+    height = imgHeight * box["Height"]
 
     points = (
         (left, top),
