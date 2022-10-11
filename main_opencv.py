@@ -83,7 +83,7 @@ def prediction(file: UploadFile = File(...)):
     # yolov3 = "yolov3"
 
     # Run object detection
-    bbox, label, conf = cv.detect_common_objects(image, model="yolov3-tiny")
+    bbox, label, conf = cv.detect_common_objects(image, model="yolov3")
 
     # Create image that includes bounding boxes and labels
     output_image = draw_bbox(image, bbox, label, conf)
