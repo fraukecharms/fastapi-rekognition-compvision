@@ -113,12 +113,13 @@ def drawboundingboxes(testpic = "testpic/pug.png"):
     )
     draw.line(points, fill="#00d400", width=2)
 
-    # Alternatively can draw rectangle. However you can't set line width.
+    # alternatively can draw rectangle, no line width option though
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
 
     # image.show()
     
-    # displays image when run from a jupyter notebook
+    # displays image when run from a jupyter notebook; useful for debugging/experimenting
+    # you can comment next line out for Swagger UI demo in browser
     ipdisplay(image)
     
     # save image with boxes to file
