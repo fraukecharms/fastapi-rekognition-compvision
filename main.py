@@ -8,6 +8,9 @@ import uvicorn
 import boto3
 import io
 
+from helper_rekognition import drawboundingboxes2test2, process_response, drawboundingboxes2
+from PIL import Image, ImageDraw, ImageColor
+
 # from PIL import Image, ImageDraw
 
 # from PIL import ExifTags, ImageColor
@@ -29,6 +32,32 @@ async def lookup2(photo: UploadFile = File(...)):
     response = client.detect_labels(Image={"Bytes": photo.file.read()})
 
     return response
+
+
+@app.get("/showimage")
+async def showfoxes():
+
+    testpic = "testpic/pug.png"
+
+    client = boto3.client("rekognition")
+
+    photo = open(testpic, 'rb')
+    
+    response = client.detect_labels(Image={"Bytes": photo.read()})
+
+    boxes = process_response(response)
+    
+    photo2 = Image.open(testpic)
+    
+    imgwbox = drawboundingboxes2(photo2, boxes[0])
+    
+    imgwbox2 = imgwbox.convert('RGB')
+    imstream = io.BytesIO()
+    imgwbox2.save(imstream, 'jpeg')
+    
+    imstream.seek(0)
+    
+    return StreamingResponse(imstream, media_type="image/jpeg")
 
 
 @app.post("/predict3")

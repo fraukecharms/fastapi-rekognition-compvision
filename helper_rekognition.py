@@ -169,7 +169,8 @@ def drawboundingboxes2test2():
     
     imgwbox = drawboundingboxes2(photo2, boxes[0])
     
-    imstream = io.BytesIO(imgwbox.tobytes())
+    imstream = io.BytesIO()
+    imgwbox.save(imstream, 'jpeg')
     
     imstream.seek(0)
     
