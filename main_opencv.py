@@ -23,7 +23,9 @@ app = FastAPI()
 
 @app.get("/")
 async def root():
-    return {"message": "Hello there ... append '/docs' to the URL to interact with the API"}
+    return {
+        "message": "Hello there ... append '/docs' to the URL to interact with the API"
+    }
 
 
 @app.post("/predict2")

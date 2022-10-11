@@ -11,7 +11,7 @@ from IPython.display import Image as ipImage
 from IPython.display import display as ipdisplay
 
 
-def lookuptest(testpic = "testpic/pug.png"):
+def lookuptest(testpic="testpic/pug.png"):
 
     client = boto3.client("rekognition")
 
@@ -23,23 +23,20 @@ def lookuptest(testpic = "testpic/pug.png"):
     return response
 
 
-
-
 def process_responsetest():
-    
+
     testpic = "testpic/pug.png"
 
     client = boto3.client("rekognition")
 
     photo = open(testpic, "rb")
-    
+
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     return process_response(response)
-    
 
-def process_response(response, verbose = False):
 
+def process_response(response, verbose=False):
 
     # print(response.keys())
     boxes = []
@@ -47,13 +44,13 @@ def process_response(response, verbose = False):
     if verbose:
         print("Detected labels")
         print()
-        
+
     for label in response["Labels"]:
         if verbose:
             print("Label: " + label["Name"])
             print("Confidence: " + str(label["Confidence"]))
             print("Instances:")
-            
+
         for instance in label["Instances"]:
             if verbose:
                 print("  Bounding box")
@@ -67,9 +64,7 @@ def process_response(response, verbose = False):
             box = instance["BoundingBox"]
             boxes.append(box)
 
-
     return boxes
-
 
 
 def lookuptest3():
@@ -93,14 +88,11 @@ def lookuptest3():
     print("test")
 
 
-
-
-
-def drawboundingboxes(testpic = "testpic/pic3.jpg"):
+def drawboundingboxes(testpic="testpic/pic3.jpg"):
 
     image = Image.open(testpic)
 
-    box = process_response(lookuptest(testpic = testpic))[0]
+    box = process_response(lookuptest(testpic=testpic))[0]
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
@@ -123,81 +115,54 @@ def drawboundingboxes(testpic = "testpic/pic3.jpg"):
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
 
     # image.show()
-    
+
     # displays image when run from a jupyter notebook; useful for debugging/experimenting
     # you can comment next line out for Swagger UI demo in browser
     ipdisplay(image)
-    
+
     # save image with boxes to file
     outpath = "images_with_boxes/pic.png"
     image.save(outpath)
 
 
 def drawboundingboxes2test():
-    
+
     testpic = "testpic/pic3.jpg"
 
     client = boto3.client("rekognition")
 
-    photo = open(testpic, 'rb')
-    
+    photo = open(testpic, "rb")
+
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     boxes = process_response(response)
-    
+
     photo2 = Image.open(testpic)
-    
+
     imgwbox = drawboundingboxes2(photo2, boxes[0])
-    
+
     outpath = "images_with_boxes/pic3_box.jpg"
     imgwbox.save(outpath)
 
 
 def drawboundingboxes2test2():
-    
+
     testpic = "testpic/pic3.jpg"
 
     client = boto3.client("rekognition")
 
-    photo = open(testpic, 'rb')
-    
+    photo = open(testpic, "rb")
+
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     boxes = process_response(response)
-    
+
     photo2 = Image.open(testpic)
-    
+
     imgwbox = drawboundingboxes2(photo2, boxes[0])
-    
-    imstream = io.BytesIO()
-    imgwbox.save(imstream, 'jpeg')
-    
-    imstream.seek(0)
-    
-    return StreamingResponse(imstream, media_type="image/jpeg")
-
-def drawboundingboxes2test3():
-    
-    testpic = "testpic/pic3.jpg"
-
-    client = boto3.client("rekognition")
-
-    photo = open(testpic, 'rb')
-    
-    response = client.detect_labels(Image={"Bytes": photo.read()})
-
-    boxes = process_response(response)
-    
-    photo2 = Image.open(testpic)
-    
-    imgwbox = drawboundingboxes2(photo2, boxes[0])
-    
-    
-    return StreamingResponse(imgwbox, media_type="image/jpeg")
 
 
 def drawboundingboxes2(image, box):
-
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
@@ -220,15 +185,15 @@ def drawboundingboxes2(image, box):
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
 
     # image.show()
-    
+
     # displays image when run from a jupyter notebook; useful for debugging/experimenting
     # you can comment next line out for Swagger UI demo in browser
-    '''
+    """
     ipdisplay(image)
     
     # save image with boxes to file
     outpath = "images_with_boxes/pic.png"
     image.save(outpath)
-    '''
-    
+    """
+
     return image
