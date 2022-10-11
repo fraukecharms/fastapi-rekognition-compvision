@@ -38,8 +38,10 @@ def display_predictions2(img_jpg, normalized_boxes, classes_names, confidences):
 
     colors = list(ImageColor.colormap.values())
     image_np = np.array(Image.open(img_jpg))
-    plt.figure(figsize=(20, 20))
+    #plt.figure(figsize=(20, 20))
+    plt.figure()
     ax = plt.axes()
+    plt.axis('off')
     ax.imshow(image_np)
 
     for idx in range(len(normalized_boxes)):
@@ -76,3 +78,6 @@ def display_predictions2(img_jpg, normalized_boxes, classes_names, confidences):
             "{} {:.0f}%".format(classes_names[idx], confidences[idx] * 100),
             bbox=dict(facecolor="white", alpha=0.5),
         )
+     
+    # seems slow
+    plt.savefig('images_with_boxes/mpl_pic.png', bbox_inches = 'tight', pad_inches = 0)
