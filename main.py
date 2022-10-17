@@ -1,6 +1,6 @@
 from fastapi import FastAPI, UploadFile, File
 
-# from fastapi import HTTPException
+from fastapi import HTTPException
 from fastapi.responses import StreamingResponse
 
 # from fastapi.responses import FileResponse
@@ -69,6 +69,14 @@ async def lookup3(photo: UploadFile = File(...)):
     # client = boto3.client("rekognition")
 
     # response = client.detect_labels(Image={'Bytes': photo.file.read()})
+
+    filename = photo.filename
+    fileExtension = filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    if not fileExtension:
+        raise HTTPException(status_code=415, detail="Unsupported file provided.")
+
+
+
 
     # Read image as a stream of bytes
     image_stream = io.BytesIO(photo.file.read())
