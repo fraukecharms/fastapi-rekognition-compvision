@@ -88,42 +88,6 @@ def lookuptest3():
     print("test")
 
 
-def drawboundingboxes(testpic="testpic/pic3.jpg"):
-
-    image = Image.open(testpic)
-
-    box = process_response(lookuptest(testpic=testpic))[0]
-
-    imgWidth, imgHeight = image.size
-    draw = ImageDraw.Draw(image)
-
-    left = imgWidth * box["Left"]
-    top = imgHeight * box["Top"]
-    width = imgWidth * box["Width"]
-    height = imgHeight * box["Height"]
-
-    points = (
-        (left, top),
-        (left + width, top),
-        (left + width, top + height),
-        (left, top + height),
-        (left, top),
-    )
-    draw.line(points, fill="#7988ed", width=2)
-
-    # alternatively can draw rectangle, no line width option though
-    # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
-
-    # image.show()
-
-    # displays image when run from a jupyter notebook; useful for debugging/experimenting
-    # you can comment next line out for Swagger UI demo in browser
-    ipdisplay(image)
-
-    # save image with boxes to file
-    outpath = "images_with_boxes/pic.png"
-    image.save(outpath)
-
 
 def drawboundingboxes2test():
 
