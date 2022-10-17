@@ -5,14 +5,12 @@
 
 </div>
 
-# Build A Computer Vision Demo 
+# Create An Object Detection Demo 
 
 using AWS Rekognition + FastAPI + AWS App Runner
 
 
 ## Docker Instructions
-
-`docker build .`
 
 `docker build --tag visiondemo .`
 
@@ -24,7 +22,7 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 <img alt="ECR push commands" width="525" src="https://user-images.githubusercontent.com/3386410/196132461-7cd7c53e-cd52-401e-972c-68fbec15937c.png">
 
-
+## Permissions
 
 
 ## Testing without docker
