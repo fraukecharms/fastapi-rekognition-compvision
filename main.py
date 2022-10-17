@@ -79,21 +79,6 @@ async def lookup3(photo: UploadFile = File(...)):
     return StreamingResponse(image_stream, media_type="image/jpeg")
 
 
-@app.post("/predict4")
-async def lookup4(photo: UploadFile = File(...)):
-    """upload image"""
-
-    # client = boto3.client("rekognition")
-
-    # response = client.detect_labels(Image={'Bytes': photo.file.read()})
-
-    # Read image as a stream of bytes
-    image_stream = io.BytesIO(photo.file.read())
-
-    # Start the stream from the beginning (position zero)
-    image_stream.seek(0)
-
-    return StreamingResponse(image_stream, media_type="image/jpeg")
 
 
 if __name__ == "__main__":
