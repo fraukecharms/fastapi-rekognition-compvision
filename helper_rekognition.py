@@ -179,7 +179,7 @@ def drawboundingboxes2(image, box):
         (left, top + height),
         (left, top),
     )
-    draw.line(points, fill="#00d400", width=2)
+    draw.line(points, fill="#c73286", width=4)
 
     # alternatively can draw rectangle, no line width option though
     # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
