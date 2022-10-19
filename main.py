@@ -25,8 +25,8 @@ async def root():
     }
 
 
-@app.post("/predict2")
-async def lookup2(photo: UploadFile = File(...)):
+@app.post("/labels")
+async def label_objects(photo: UploadFile = File(...)):
     """upload image"""
 
     client = boto3.client("rekognition")
@@ -36,7 +36,39 @@ async def lookup2(photo: UploadFile = File(...)):
     return response
 
 
-@app.get("/showimage")
+@app.post("/draw_box")
+async def draw_bounding_box(photo: UploadFile = File(...)):
+    """upload image"""
+
+    filename = photo.filename
+    fileExtension = filename.split(".")[-1] in ("jpg", "jpeg", "png")
+    if not fileExtension:
+        raise HTTPException(status_code=415, detail="Unsupported file provided.")
+
+    photobytes = bytearray(photo.file.read())
+
+    client = boto3.client("rekognition")
+    response = client.detect_labels(Image={"Bytes": photobytes})
+    boxes = process_response(response)
+    
+
+    image_stream = io.BytesIO(photobytes)
+    image_stream.seek(0)
+    photo2 = Image.open(image_stream)
+    
+    imgwbox = drawboundingboxes2(photo2, boxes[0])
+
+    imgwbox2 = imgwbox.convert("RGB")
+    imstream = io.BytesIO()
+    imgwbox2.save(imstream, "jpeg")
+
+    imstream.seek(0)
+
+    return StreamingResponse(imstream, media_type="image/jpeg")
+
+
+#uncomment to show example pic with bounding box
+#@app.get("/showimage")
 async def showfoxes():
 
     testpic = "testpic/pic3.jpg"
@@ -60,33 +92,6 @@ async def showfoxes():
     imstream.seek(0)
 
     return StreamingResponse(imstream, media_type="image/jpeg")
-
-
-@app.post("/predict3")
-async def lookup3(photo: UploadFile = File(...)):
-    """upload image"""
-
-    # client = boto3.client("rekognition")
-
-    # response = client.detect_labels(Image={'Bytes': photo.file.read()})
-
-    filename = photo.filename
-    fileExtension = filename.split(".")[-1] in ("jpg", "jpeg", "png")
-    if not fileExtension:
-        raise HTTPException(status_code=415, detail="Unsupported file provided.")
-
-
-
-
-    # Read image as a stream of bytes
-    image_stream = io.BytesIO(photo.file.read())
-
-    # Start the stream from the beginning (position zero)
-    image_stream.seek(0)
-
-    return StreamingResponse(image_stream, media_type="image/jpeg")
-
-
 
 
 if __name__ == "__main__":
