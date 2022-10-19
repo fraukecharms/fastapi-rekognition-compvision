@@ -34,7 +34,7 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 ## Learning Material
 
-* Uni Michigan, more up to date version than the stanford course, great assignments
+* [Uni Michigan](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/), more up to date version than the stanford course, great assignments
 * coursera specialization by noah gift
 * aws technical essentials, by nature a little bit boring but the instructors make it as fun as possible
 * machine learning in production, quick overview of things to keep in mind
