@@ -41,8 +41,9 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     """upload image"""
 
     filename = photo.filename
-    fileExtension = filename.split(".")[-1] in ("jpg", "jpeg", "png")
-    if not fileExtension:
+    file_ext = filename.split(".")[-1]
+    
+    if not (file_ext in ("jpg", "jpeg", "png")):
         raise HTTPException(status_code=415, detail="Unsupported file provided.")
 
     photobytes = bytearray(photo.file.read())
@@ -58,16 +59,23 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     
     imgwbox = drawboundingboxes2(photo2, boxes[0])
 
+    # try to get rid of this conversion or maybe do it immediately when reading image?
     imgwbox2 = imgwbox.convert("RGB")
     imstream = io.BytesIO()
-    imgwbox2.save(imstream, "jpeg")
+    #imgwbox2.save(imstream, "jpeg")
+    
+    if file_ext == "jpg":
+        imgwbox2.save(imstream, 'jpeg')
+    else:
+        imgwbox2.save(imstream, file_ext)
 
     imstream.seek(0)
 
+    # could also try to not have conversion here
     return StreamingResponse(imstream, media_type="image/jpeg")
 
 
-#uncomment to show example pic with bounding box
+#uncomment to show option for example pic with bounding box
 #@app.get("/showimage")
 async def showfoxes():
 
