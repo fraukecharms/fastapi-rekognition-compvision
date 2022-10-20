@@ -88,7 +88,6 @@ def lookuptest3():
     print("test")
 
 
-
 def drawboundingboxes2test():
 
     testpic = "testpic/pic3.jpg"
@@ -145,9 +144,6 @@ def drawboundingboxes2(image, box):
     )
     draw.line(points, fill="#c73286", width=4)
 
-    # alternatively can draw rectangle, no line width option though
-    # draw.rectangle([left,top, left + width, top + height], outline='#00d400')
-
     # image.show()
 
     # displays image when run from a jupyter notebook; useful for debugging/experimenting
@@ -161,4 +157,3 @@ def drawboundingboxes2(image, box):
     """
 
     return image
-

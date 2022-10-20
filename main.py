@@ -42,10 +42,10 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
 
     filename = photo.filename
     file_ext = filename.split(".")[-1]
-    
+
     if file_ext == "jpg":
-        file_ext = 'jpeg'
-    
+        file_ext = "jpeg"
+
     if not (file_ext in ("jpeg", "png")):
         raise HTTPException(status_code=415, detail="Unsupported file provided.")
 
@@ -58,12 +58,12 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     image_stream = io.BytesIO(photobytes)
     image_stream.seek(0)
     photo2 = Image.open(image_stream)
-    
+
     imgwbox = drawboundingboxes2(photo2, boxes[0])
 
     # conversion was necessary when I was being sloppy with jpeg vs png
     # imgwbox2 = imgwbox.convert("RGB")
-    
+
     imstream = io.BytesIO()
     imgwbox.save(imstream, file_ext)
     imstream.seek(0)
@@ -71,8 +71,8 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     return StreamingResponse(imstream, media_type="image/" + file_ext)
 
 
-#uncomment to show option for example pic with bounding box
-#@app.get("/showimage")
+# uncomment to show option for example pic with bounding box
+# @app.get("/showimage")
 async def showfoxes():
 
     testpic = "testpic/pic3.jpg"
