@@ -71,31 +71,6 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     return StreamingResponse(imstream, media_type="image/" + file_ext)
 
 
-# uncomment to show option for example pic with bounding box
-# @app.get("/showimage")
-async def showfoxes():
-
-    testpic = "testpic/pic3.jpg"
-
-    client = boto3.client("rekognition")
-
-    photo = open(testpic, "rb")
-
-    response = client.detect_labels(Image={"Bytes": photo.read()})
-
-    boxes = process_response(response)
-
-    photo2 = Image.open(testpic)
-
-    imgwbox = drawboundingboxes2(photo2, boxes[0])
-
-    imgwbox2 = imgwbox.convert("RGB")
-    imstream = io.BytesIO()
-    imgwbox2.save(imstream, "jpeg")
-
-    imstream.seek(0)
-
-    return StreamingResponse(imstream, media_type="image/jpeg")
 
 
 if __name__ == "__main__":
