@@ -24,6 +24,8 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::480352539845:user/GitHubRekognition
         aws-region: eu-central-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     - name: Test with pytest
       run: |
         make test
