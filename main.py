@@ -54,7 +54,6 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     client = boto3.client("rekognition")
     response = client.detect_labels(Image={"Bytes": photobytes})
     boxes = process_response(response)
-    
 
     image_stream = io.BytesIO(photobytes)
     image_stream.seek(0)
@@ -62,14 +61,13 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     
     imgwbox = drawboundingboxes2(photo2, boxes[0])
 
-    # conversion necessary if sloppy with jpeg vs png
+    # conversion was necessary when I was being sloppy with jpeg vs png
     # imgwbox2 = imgwbox.convert("RGB")
+    
     imstream = io.BytesIO()
-
     imgwbox.save(imstream, file_ext)
     imstream.seek(0)
 
-    # could also try to not have conversion here
     return StreamingResponse(imstream, media_type="image/" + file_ext)
 
 
