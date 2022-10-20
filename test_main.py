@@ -10,7 +10,6 @@ def test_root():
 
     assert response.status_code == 200
 
-"""
 
 def test_labels():
     client = TestClient(app)
@@ -22,4 +21,3 @@ def test_labels():
 
     assert response.status_code == 200
     
-"""
