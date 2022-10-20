@@ -10,3 +10,4 @@ black
 Pillow
 ipython
 nbconvert
+requests
