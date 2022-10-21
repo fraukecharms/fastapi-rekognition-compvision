@@ -34,7 +34,7 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 ## Learning Material
 
-* [Uni Michigan](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/), more up to date version than the stanford course, great assignments
-* coursera specialization by noah gift
-* aws technical essentials, by nature a little bit boring but the instructors make it as fun as possible
-* machine learning in production, quick overview of things to keep in mind
+* [Deep Learning For Computer Vision](https://web.eecs.umich.edu/~justincj/teaching/eecs498/WI2022/) very similar to CS231n, but more up to date; pytorch assignments in Google Colab
+* [Building Cloud Computing Solutions at Scale](https://www.coursera.org/specializations/building-cloud-computing-solutions-at-scale)
+* [AWS Technical Essentials](https://www.coursera.org/learn/aws-cloud-technical-essentials)
+* [Introduction to Machine Learning in Production](https://www.coursera.org/learn/introduction-to-machine-learning-in-production)
