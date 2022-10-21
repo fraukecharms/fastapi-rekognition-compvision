@@ -16,7 +16,7 @@ def test_labels():
 
     response = client.post(
         "/labels",
-        files={"photo": ("filename", open("testpic/pic1.jpg", "rb"), "image/jpeg")},
+        files={"photo": ("filename", open("testpics/pic1.jpg", "rb"), "image/jpeg")},
     )
 
     assert response.status_code == 200
