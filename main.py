@@ -71,7 +71,5 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     return StreamingResponse(imstream, media_type="image/" + file_ext)
 
 
-
-
 if __name__ == "__main__":
     uvicorn.run(app, port=8080, host="0.0.0.0")

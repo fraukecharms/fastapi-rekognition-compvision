@@ -11,9 +11,6 @@ from IPython.display import Image as ipImage
 from IPython.display import display as ipdisplay
 
 
-
-
-
 def process_response(response, verbose=False):
 
     # print(response.keys())
@@ -43,7 +40,6 @@ def process_response(response, verbose=False):
             boxes.append(box)
 
     return boxes
-
 
 
 def draw_bounding_boxes(image, box):

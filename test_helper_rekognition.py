@@ -4,6 +4,7 @@ from PIL import Image, ImageDraw, ImageColor
 from IPython.display import Image as ipImage
 from IPython.display import display as ipdisplay
 
+
 def lookuptest(testpic="testpics/pic4.png"):
 
     client = boto3.client("rekognition")
@@ -27,8 +28,8 @@ def process_responsetest():
     response = client.detect_labels(Image={"Bytes": photo.read()})
 
     return process_response(response)
-    
-    
+
+
 def lookuptest3():
 
     # boxes = lookuptest2()
@@ -85,4 +86,3 @@ def drawboundingboxes2test2():
     photo2 = Image.open(testpic)
 
     imgwbox = drawboundingboxes2(photo2, boxes[0])
-

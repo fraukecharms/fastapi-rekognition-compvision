@@ -20,4 +20,3 @@ def test_labels():
     )
 
     assert response.status_code == 200
-    
