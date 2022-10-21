@@ -8,7 +8,7 @@ import uvicorn
 import boto3
 import io
 
-from helper_rekognition import process_response, drawboundingboxes2
+from helper_rekognition import process_response, draw_bounding_boxes
 from PIL import Image
 
 # from PIL import Image, ImageDraw
@@ -59,7 +59,7 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     image_stream.seek(0)
     photo2 = Image.open(image_stream)
 
-    imgwbox = drawboundingboxes2(photo2, boxes[0])
+    imgwbox = draw_bounding_boxes(photo2, boxes[0])
 
     # conversion was necessary when I was being sloppy with jpeg vs png
     # imgwbox2 = imgwbox.convert("RGB")
