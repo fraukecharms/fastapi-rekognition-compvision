@@ -27,9 +27,11 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 ## Run without docker
 
-`make install`
 
-`python main.py`
+```console
+$ make install
+$ python main.py
+```
 
 
 ## Learning Material
