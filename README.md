@@ -12,10 +12,10 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 ## Docker Instructions
 
-`docker build --tag visiondemo .`
-
-`docker run -p 127.0.0.1:8080:8080 visiondemo`
-
+```sh
+docker build --tag visiondemo .
+docker run -p 127.0.0.1:8080:8080 visiondemo
+```
 
 ## ECR Instructions
 
@@ -28,9 +28,10 @@ using AWS Rekognition + FastAPI + AWS App Runner
 ## Run without docker
 
 
-```console
-$ make install
-$ python main.py
+```sh
+pip install --upgrade pip
+pip install -r requirements.txt
+python main.py
 ```
 
 
