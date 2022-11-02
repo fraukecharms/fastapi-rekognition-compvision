@@ -20,4 +20,4 @@ killweb:
 lint:
 	pylint --disable=R,C main.py
 
-all: install lint
+all:	install lint
