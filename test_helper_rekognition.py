@@ -16,7 +16,6 @@ def test_rekognition(testpic="testpics/pic4.png"):
 
     assert response['ResponseMetadata']['HTTPStatusCode'] == 200
     
-    return response
 
 
 def test_process_response():
@@ -50,8 +49,9 @@ def test_draw_bounding_boxes():
     photo2 = Image.open(testpic)
 
     imgwbox = draw_bounding_boxes(photo2, boxes[0])
-
-    os.mkdir('images_with_boxes')
+    
+    if not os.path.exists('images_with_boxes'):
+        os.mkdir('images_with_boxes')
     outpath = "images_with_boxes/pic3_box.jpg"
     imgwbox.save(outpath)
     
