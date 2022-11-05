@@ -29,15 +29,14 @@ docker run -p 127.0.0.1:8080:8080 visiondemo
 
 
 ```sh
-pip install --upgrade pip
-pip install -r requirements.txt
+make install
 python main.py
 ```
 
-## Run Docker locally
+## Run Docker container locally in Cloud9
 
 ```sh
-docker run -p 127.0.0.1:8080:8080 -v ~/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo
+docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo
 ```
 
 ## Learning Material
