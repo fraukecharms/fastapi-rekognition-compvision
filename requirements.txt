@@ -9,5 +9,4 @@ python-multipart
 black
 Pillow
 ipython
-nbconvert
 requests
