@@ -1,10 +1,4 @@
-#import io
-#from PIL import Image, ImageColor
 from PIL import ImageDraw
-
-
-#from IPython.display import Image as ipImage
-#from IPython.display import display as ipdisplay
 
 
 def process_response(response, verbose=False):
@@ -55,18 +49,9 @@ def draw_bounding_boxes(image, box):
         (left, top + height),
         (left, top),
     )
-    draw.line(points, fill="#c73286", width=4)
 
-    # image.show()
+    linewidth = int((imgWidth + imgHeight) // 200) + 2
 
-    # displays image when run from a jupyter notebook; useful for debugging/experimenting
-    # you can comment next line out for Swagger UI demo in browser
-    
-    #ipdisplay(image)
-    
-    ## save image with boxes to file
-    #outpath = "images_with_boxes/pic.png"
-    #image.save(outpath)
-
+    draw.line(points, fill="#c73286", width=linewidth)
 
     return image
