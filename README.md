@@ -48,6 +48,9 @@ docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e \
 ```
 
 
+<img width="1140" alt="Screenshot 2022-11-07 at 11 54 20" src="https://user-images.githubusercontent.com/3386410/200293317-4e1bb8ab-c3c3-4dfb-89a9-40f4595a3d26.png">
+
+
 ## (Optional) Run without Docker
 
 
