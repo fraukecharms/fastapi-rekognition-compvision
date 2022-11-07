@@ -14,7 +14,10 @@ using AWS Rekognition + FastAPI + AWS App Runner
 
 ```sh
 docker build --tag visiondemo-rekognition .
-docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo-rekognition
+```
+```sh
+docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e \
+    AWS_PROFILE=default visiondemo-rekognition
 ```
 
 ## ECR Instructions
