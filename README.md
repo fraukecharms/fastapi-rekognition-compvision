@@ -20,7 +20,9 @@ docker run -p 127.0.0.1:8080:8080 visiondemo
 ## ECR Instructions
 
 
-<img alt="ECR push commands" width="525" src="https://user-images.githubusercontent.com/3386410/196132461-7cd7c53e-cd52-401e-972c-68fbec15937c.png">
+<img width="1335" alt="Screenshot 2022-11-07 at 10 15 38" src="https://user-images.githubusercontent.com/3386410/200273869-9d23277e-b70f-47c4-8967-efd02882786b.png">
+
+
 
 ## Permissions
 
