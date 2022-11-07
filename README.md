@@ -56,6 +56,10 @@ make install
 python main.py
 ```
 
+## (Optional) Automated Testing with Github Actions
+
+In order to use the Github Actions workflow you need to establish a connection between Github and AWS such that Github has permission to make API calls to AWS Rekognition.
+
 
 ## Learning Material
 
