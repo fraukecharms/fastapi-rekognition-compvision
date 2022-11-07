@@ -58,7 +58,7 @@ python main.py
 
 ## (Optional) Automated Testing with Github Actions
 
-This is not required for the demo to work, but if you are interested, check out the `main.yml` file in `.github/workflows/`. In order to use this workflow you need to configure AWS credentials for your repo. You can read more about it [here](https://github.com/aws-actions/configure-aws-credentials) and [here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services).
+This is not required for the demo to work, but if you are interested in automated testing, check out the `main.yml` file in `.github/workflows/`. In order to use this workflow you need to configure AWS credentials for your repo. You can read more about it [here](https://github.com/aws-actions/configure-aws-credentials) and [here](https://docs.github.com/en/actions/deployment/security-hardening-your-deployments/configuring-openid-connect-in-amazon-web-services).
 
 
 ## Learning Material
