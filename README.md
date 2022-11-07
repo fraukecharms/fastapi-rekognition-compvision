@@ -36,7 +36,8 @@ python main.py
 ## Run Docker container locally in Cloud9
 
 ```sh
-docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo
+docker build --tag visiondemo-rekognition .
+docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo-rekognition
 ```
 
 ## Learning Material
