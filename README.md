@@ -10,11 +10,11 @@
 using AWS Rekognition + FastAPI + AWS App Runner
 
 
-## Docker Instructions
+## Build and Run Docker Container in Cloud9
 
 ```sh
-docker build --tag visiondemo .
-docker run -p 127.0.0.1:8080:8080 visiondemo
+docker build --tag visiondemo-rekognition .
+docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo-rekognition
 ```
 
 ## ECR Instructions
@@ -27,7 +27,25 @@ docker run -p 127.0.0.1:8080:8080 visiondemo
 ## Permissions
 
 
-## Run without Docker
+```json
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "tasks.apprunner.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+
+```
+
+
+## (Optional) Run without Docker
 
 
 ```sh
@@ -35,12 +53,6 @@ make install
 python main.py
 ```
 
-## Run Docker container locally in Cloud9
-
-```sh
-docker build --tag visiondemo-rekognition .
-docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e AWS_PROFILE=default visiondemo-rekognition
-```
 
 ## Learning Material
 
