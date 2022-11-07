@@ -10,7 +10,7 @@
 using AWS Rekognition + FastAPI + AWS App Runner
 
 
-## Build and Run Docker Container in Cloud9
+## Build and Run Docker Container in Cloud9 Environment
 
 ```sh
 docker build --tag visiondemo-rekognition .
