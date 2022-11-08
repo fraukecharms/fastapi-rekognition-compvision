@@ -10,7 +10,7 @@
 using AWS Rekognition + FastAPI + AWS App Runner
 
 
-## Build and Run Docker Container in Cloud9 Environment
+## Docker Instructions
 
 ```sh
 docker build --tag visiondemo-rekognition .
@@ -20,7 +20,7 @@ docker run -p 127.0.0.1:8080:8080 -v $HOME/.aws/:/root/.aws:ro -e \
     AWS_PROFILE=default visiondemo-rekognition
 ```
 
-## ECR Instructions
+## Push to ECR
 
 
 <img width="1335" alt="Screenshot 2022-11-07 at 10 15 38" src="https://user-images.githubusercontent.com/3386410/200273869-9d23277e-b70f-47c4-8967-efd02882786b.png">
