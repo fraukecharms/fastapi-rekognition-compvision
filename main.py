@@ -3,7 +3,6 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi import HTTPException
 from fastapi.responses import StreamingResponse
 
-# from fastapi.responses import FileResponse
 import uvicorn
 import boto3
 import io
@@ -11,9 +10,6 @@ import io
 from helper_rekognition import process_response, draw_bounding_boxes
 from PIL import Image
 
-# from PIL import Image, ImageDraw
-
-# from PIL import ExifTags, ImageColor
 
 app = FastAPI()
 
@@ -42,6 +38,7 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
 
     filename = photo.filename
     file_ext = filename.split(".")[-1]
+
 
     if file_ext == "jpg":
         file_ext = "jpeg"
