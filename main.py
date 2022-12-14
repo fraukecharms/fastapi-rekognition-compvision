@@ -39,7 +39,6 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     filename = photo.filename
     file_ext = filename.split(".")[-1].lower()
 
-
     if file_ext == "jpg":
         file_ext = "jpeg"
 
