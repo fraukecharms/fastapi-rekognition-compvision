@@ -10,3 +10,4 @@ black
 Pillow
 ipython
 requests
+httpx
