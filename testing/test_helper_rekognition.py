@@ -27,7 +27,7 @@ def test_process_response():
     with open(testpic, "rb") as photo:
         response = client.detect_labels(Image={"Bytes": photo.read()})
 
-    boxes = process_response(response)
+    boxes, _ = process_response(response)
     
     assert len(boxes) > 0
 
@@ -44,7 +44,7 @@ def test_draw_bounding_boxes():
 
         response = client.detect_labels(Image={"Bytes": photo.read()})
 
-    boxes = process_response(response)
+    boxes, _ = process_response(response)
 
     photo2 = Image.open(testpic)
 

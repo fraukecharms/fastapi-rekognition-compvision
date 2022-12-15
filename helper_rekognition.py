@@ -5,6 +5,7 @@ def process_response(response, verbose=False):
 
     # print(response.keys())
     boxes = []
+    labels = []
 
     if verbose:
         print("Detected labels")
@@ -28,8 +29,9 @@ def process_response(response, verbose=False):
 
             box = instance["BoundingBox"]
             boxes.append(box)
+            labels.append(label["Name"])
 
-    return boxes
+    return boxes, labels
 
 
 def draw_bounding_boxes(image, box):
@@ -44,13 +46,6 @@ def draw_bounding_boxes(image, box):
     right = left + width
     bottom = top + height
 
-    # points = (
-    #     (left, top),
-    #     (left + width, top),
-    #     (left + width, top + height),
-    #     (left, top + height),
-    #     (left, top),
-    # )
 
     # linewidth = int((imgWidth + imgHeight) // 200) + 2
 

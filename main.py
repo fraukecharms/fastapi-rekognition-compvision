@@ -49,7 +49,7 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
 
     client = boto3.client("rekognition")
     response = client.detect_labels(Image={"Bytes": photobytes})
-    boxes = process_response(response)
+    boxes, _ = process_response(response)
 
     image_stream = io.BytesIO(photobytes)
     image_stream.seek(0)
