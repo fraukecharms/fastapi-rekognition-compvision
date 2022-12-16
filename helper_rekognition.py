@@ -54,14 +54,15 @@ def draw_bounding_box(image, box, label=None):
     draw.rectangle(points, outline="#c73286", width=linewidth)
 
     if label:
-        size = linewidth * 5
+        size = linewidth * 4
 
         font = ImageFont.truetype("font/OpenSans-Regular.ttf", size)
 
-        draw.text((left, top), label, font=font, anchor="lt")
+        textanchor = (left + linewidth, top + linewidth)
+        draw.text(textanchor, label, font=font, anchor="lt")
+        
+        textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
 
-        textbb = draw.textbbox((left, top), label, font=font, anchor="lt")
-
-        draw.rectangle(textbb, width = linewidth//2 + 1)
+        #draw.rectangle(textbb, width = linewidth//2 + 1)
 
     return image
