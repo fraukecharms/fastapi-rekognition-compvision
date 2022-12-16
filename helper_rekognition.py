@@ -34,7 +34,7 @@ def process_response(response, verbose=False):
     return boxes, labels
 
 
-def draw_bounding_boxes(image, box, label=None):
+def draw_bounding_box(image, box, label=None):
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image)
@@ -46,16 +46,15 @@ def draw_bounding_boxes(image, box, label=None):
     right = left + width
     bottom = top + height
 
-    # linewidth = int((imgWidth + imgHeight) // 200) + 2
+    linewidth = int((imgWidth + imgHeight) // 200) + 2
 
-    # draw.line(points, fill="#c73286", width=linewidth)
 
     points = [(left, top), (right, bottom)]
 
-    draw.rectangle(points, outline="#c73286", width=4)
+    draw.rectangle(points, outline="#c73286", width=linewidth)
 
     if label:
-        size = 25
+        size = linewidth * 5
 
         font = ImageFont.truetype("font/OpenSans-Regular.ttf", size)
 
@@ -63,6 +62,6 @@ def draw_bounding_boxes(image, box, label=None):
 
         textbb = draw.textbbox((left, top), label, font=font, anchor="lt")
 
-        draw.rectangle(textbb)
+        draw.rectangle(textbb, width = linewidth//2 + 1)
 
     return image

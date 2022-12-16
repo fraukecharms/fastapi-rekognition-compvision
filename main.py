@@ -7,7 +7,7 @@ import uvicorn
 import boto3
 import io
 
-from helper_rekognition import process_response, draw_bounding_boxes
+from helper_rekognition import process_response, draw_bounding_box
 from PIL import Image
 
 
@@ -33,7 +33,7 @@ async def label_objects(photo: UploadFile = File(...)):
 
 
 @app.post("/draw_box")
-async def draw_bounding_box(photo: UploadFile = File(...)):
+async def draw_box(photo: UploadFile = File(...)):
     """upload image"""
 
     filename = photo.filename
@@ -55,10 +55,7 @@ async def draw_bounding_box(photo: UploadFile = File(...)):
     image_stream.seek(0)
     photo2 = Image.open(image_stream)
 
-    imgwbox = draw_bounding_boxes(photo2, boxes[0], label=labels[0])
-
-    # conversion was necessary when I was being sloppy with jpeg vs png
-    # imgwbox2 = imgwbox.convert("RGB")
+    imgwbox = draw_bounding_box(photo2, boxes[0], label=labels[0])
 
     imstream = io.BytesIO()
     imgwbox.save(imstream, file_ext)

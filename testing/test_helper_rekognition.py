@@ -1,5 +1,5 @@
 import boto3
-from helper_rekognition import process_response, draw_bounding_boxes
+from helper_rekognition import process_response, draw_bounding_box
 from PIL import Image, ImageDraw, ImageColor
 from IPython.display import Image as ipImage
 from IPython.display import display as ipdisplay
@@ -34,7 +34,7 @@ def test_process_response():
 
 
 
-def test_draw_bounding_boxes():
+def test_draw_bounding_box():
 
     testpic = "testpics/pic3.jpg"
 
@@ -48,7 +48,7 @@ def test_draw_bounding_boxes():
 
     photo2 = Image.open(testpic)
 
-    imgwbox = draw_bounding_boxes(photo2, boxes[0])
+    imgwbox = draw_bounding_box(photo2, boxes[0])
     
     if not os.path.exists('images_with_boxes'):
         os.mkdir('images_with_boxes')
