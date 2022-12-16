@@ -48,7 +48,6 @@ def draw_bounding_box(image, box, label=None):
 
     linewidth = int((imgWidth + imgHeight) // 200) + 2
 
-
     points = [(left, top), (right, bottom)]
 
     draw.rectangle(points, outline="#c73286", width=linewidth)
@@ -60,9 +59,9 @@ def draw_bounding_box(image, box, label=None):
 
         textanchor = (left + linewidth, top + linewidth)
         draw.text(textanchor, label, font=font, anchor="lt")
-        
-        textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
 
-        #draw.rectangle(textbb, width = linewidth//2 + 1)
+        # textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
+
+        # draw.rectangle(textbb, width = linewidth//2 + 1)
 
     return image
