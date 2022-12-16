@@ -16,7 +16,18 @@ def test_labels():
 
     response = client.post(
         "/labels",
-        files={"photo": ("filename", open("testpics/pic1.jpg", "rb"), "image/jpeg")},
+        files={"photo": ("testpics/pic1.jpg", open("testpics/pic1.jpg", "rb"), "image/jpeg")},
     )
+
+    assert response.status_code == 200
+
+def test_draw_box():
+    client = TestClient(app)
+
+    response = client.post(
+        "/draw_box",
+        files={"photo": ("testpics/pic1.jpg", open("testpics/pic1.jpg", "rb"), "image/jpeg")},
+    )
+    print(response)
 
     assert response.status_code == 200
