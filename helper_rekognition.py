@@ -43,6 +43,7 @@ def draw_bounding_box(image, box, label=None):
     linewidth_textbox = max(int(linewidth // 3), 1)
     textsize = linewidth * 4
 
+    # shift is used to add margins around text bounding box below
     shift = (
         -3 * linewidth_textbox,
         -3 * linewidth_textbox,
@@ -70,6 +71,7 @@ def draw_bounding_box(image, box, label=None):
 
         textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
 
+        # text bounding box with margins
         spaceybox = [sum(x) for x in zip(textbb, shift)]
 
         draw.rectangle(spaceybox, width=linewidth_textbox, fill=(255, 255, 255, 128))

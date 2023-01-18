@@ -45,18 +45,22 @@ async def draw_box(photo: UploadFile = File(...)):
     if not (file_ext in ("jpeg", "png")):
         raise HTTPException(status_code=415, detail="Unsupported file provided.")
 
+    # convert image to bytearray
     photobytes = bytearray(photo.file.read())
 
+    # send image to rekognition and extract labels and bounding boxes
     client = boto3.client("rekognition")
     response = client.detect_labels(Image={"Bytes": photobytes})
     boxes, labels = process_response(response)
 
+    # convert bytearray to PIL image
     image_stream = io.BytesIO(photobytes)
     image_stream.seek(0)
     photo2 = Image.open(image_stream)
 
     imgwbox = draw_bounding_box(photo2, boxes[0], label=labels[0])
 
+    # save PIL image to image stream
     imstream = io.BytesIO()
     imgwbox.save(imstream, file_ext)
     imstream.seek(0)
