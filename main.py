@@ -45,7 +45,6 @@ async def draw_box(photo: UploadFile = File(...)):
     if not (file_ext in ("jpeg", "png")):
         raise HTTPException(status_code=415, detail="Unsupported file provided.")
 
-    # convert image to bytearray
     photobytes = bytearray(photo.file.read())
 
     # send image to rekognition and extract labels and bounding boxes
