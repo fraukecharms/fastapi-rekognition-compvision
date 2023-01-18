@@ -2,6 +2,15 @@ from PIL import ImageDraw, ImageFont
 
 
 def process_response(response, verbose=False):
+    """process response received from AWS Rekognition
+
+    Args:
+        response: json response received from AWS Rekognition
+        verbose (bool, optional): optional verbose output. defaults to False.
+
+    Returns:
+        bounding boxes, labels
+    """
 
     # print(response.keys())
     boxes = []
@@ -35,6 +44,16 @@ def process_response(response, verbose=False):
 
 
 def draw_bounding_box(image, box, label=None):
+    """draw bounding box on image
+
+    Args:
+        image: PIL Image
+        box: dictionary containing normalized bounding box coordinates
+        label: optional text label. defaults to None.
+
+    Returns:
+        PIL Image with bounding box
+    """
 
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image, mode="RGBA")
