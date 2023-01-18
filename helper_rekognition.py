@@ -39,6 +39,7 @@ def draw_bounding_box(image, box, label=None):
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image, mode="RGBA")
 
+    # set bounding box linewidth based on image size
     linewidth = max(int((imgWidth + imgHeight) // 300), 2)
     linewidth_textbox = max(int(linewidth // 3), 1)
     textsize = linewidth * 4
@@ -60,6 +61,7 @@ def draw_bounding_box(image, box, label=None):
 
     points = [(left, top), (right, bottom)]
 
+    # draw object bounding box
     draw.rectangle(points, outline="#c73286", width=linewidth)
 
     if label:
@@ -74,7 +76,7 @@ def draw_bounding_box(image, box, label=None):
         # text bounding box with margins
         spaceybox = [sum(x) for x in zip(textbb, shift)]
 
+        # draw text bounding box around label
         draw.rectangle(spaceybox, width=linewidth_textbox, fill=(255, 255, 255, 128))
-        # draw.rectangle(textbb, width = linewidth//2 + 1)
 
     return image
