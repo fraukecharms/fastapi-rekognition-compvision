@@ -5,7 +5,7 @@
 
 </div>
 
-# Create An Object Detection Demo 
+# Create an Object Detection Demo 
 
 using AWS Rekognition + FastAPI + AWS App Runner
 
