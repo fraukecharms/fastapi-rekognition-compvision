@@ -58,10 +58,11 @@ def draw_bounding_box(image: Image, box: dict[str, float], label=None) -> Image:
     imgWidth, imgHeight = image.size
     draw = ImageDraw.Draw(image, mode="RGBA")
 
-    # set bounding box linewidth based on image size
+    # set bounding box linewidths based on image size
     linewidth = max(int((imgWidth + imgHeight) // 300), 2)
     linewidth_textbox = max(int(linewidth // 3), 1)
     textsize = linewidth * 4
+    font = ImageFont.truetype("font/OpenSans-Regular.ttf", textsize)
 
     # margins for text bounding box
     shift = (
@@ -71,13 +72,13 @@ def draw_bounding_box(image: Image, box: dict[str, float], label=None) -> Image:
         3 * linewidth_textbox,
     )
 
+    # object bounding box coordinates
     left = imgWidth * box["Left"]
     top = imgHeight * box["Top"]
     width = imgWidth * box["Width"]
     height = imgHeight * box["Height"]
     right = left + width
     bottom = top + height
-
     points = [(left, top), (right, bottom)]
 
     # draw object bounding box
@@ -85,17 +86,13 @@ def draw_bounding_box(image: Image, box: dict[str, float], label=None) -> Image:
 
     if label:
 
-        font = ImageFont.truetype("font/OpenSans-Regular.ttf", textsize)
-
+        # draw label text
         textanchor = (left + 2 * linewidth, top + 2 * linewidth)
         draw.text(textanchor, label, font=font, anchor="lt")
 
+        # draw label bounding box with added margins
         textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
-
-        # text bounding box with added margins
         spaceybox = [sum(x) for x in zip(textbb, shift)]
-
-        # draw text bounding box around label
         draw.rectangle(spaceybox, width=linewidth_textbox, fill=(255, 255, 255, 128))
 
     return image
