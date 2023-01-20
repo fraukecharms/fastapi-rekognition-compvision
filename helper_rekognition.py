@@ -1,11 +1,11 @@
-from PIL import ImageDraw, ImageFont
+from PIL import ImageDraw, ImageFont, Image
 
 
-def process_response(response, verbose=False):
+def process_response(response: dict, verbose=False) -> tuple[list[dict], list[str]]:
     """process response received from AWS Rekognition
 
     Args:
-        response: json response received from AWS Rekognition
+        response: json/python dict response received from AWS Rekognition
         verbose (bool, optional): optional verbose output. defaults to False.
 
     Returns:
@@ -43,7 +43,7 @@ def process_response(response, verbose=False):
     return boxes, labels
 
 
-def draw_bounding_box(image, box, label=None):
+def draw_bounding_box(image: Image, box: dict[str, float], label=None) -> Image:
     """draw bounding box on image
 
     Args:
