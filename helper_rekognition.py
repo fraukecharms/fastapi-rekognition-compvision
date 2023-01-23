@@ -1,5 +1,5 @@
+from __future__ import annotations
 from PIL import ImageDraw, ImageFont, Image
-
 
 def process_response(response: dict, verbose=False) -> tuple[list[dict], list[str]]:
     """process response received from AWS Rekognition
