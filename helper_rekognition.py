@@ -1,7 +1,9 @@
 from __future__ import annotations
+from typing import Tuple, List, Dict
 from PIL import ImageDraw, ImageFont, Image
 
-def process_response(response: dict, verbose=False) -> tuple[list[dict], list[str]]:
+
+def process_response(response: dict, verbose=False) -> Tuple[List[dict], List[str]]:
     """process response received from AWS Rekognition
 
     Args:
@@ -43,7 +45,7 @@ def process_response(response: dict, verbose=False) -> tuple[list[dict], list[st
     return boxes, labels
 
 
-def draw_bounding_box(image: Image, box: dict[str, float], label=None) -> Image:
+def draw_bounding_box(image: Image, box: Dict[str, float], label=None) -> Image:
     """draw bounding box on image
 
     Args:
