@@ -7,9 +7,13 @@
 
 # Create an Object Detection Demo 
 
-using AWS Rekognition + FastAPI + AWS App Runner
+You can use this repo to quickly create a live public(!) demo website for object detection. The prediction requests are sent to AWS' built-in Rekognition service. If you are looking for a solution that sends requests to your own Sagemaker endpoint, check out [this repo](https://github.com/fraukecharms/fastapi-sagemaker-compvision) instead.
 
+## Before You Start
+Make sure that you do all your work in a region where App Runner is available (e.g. `eu-west-1` if you are based in Europe).
 
+## Walk-Through Screen Recording
+to be recorded
 
 ## Docker Instructions
 
