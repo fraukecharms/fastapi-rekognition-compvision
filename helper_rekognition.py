@@ -88,13 +88,14 @@ def draw_bounding_box(image: Image, box: Dict[str, float], label=None) -> Image:
 
     if label:
 
-        # draw label text
         textanchor = (left + 2 * linewidth, top + 2 * linewidth)
-        draw.text(textanchor, label, font=font, anchor="lt")
-
+        
         # draw label bounding box with added margins
         textbb = draw.textbbox(textanchor, label, font=font, anchor="lt")
         spaceybox = [sum(x) for x in zip(textbb, shift)]
         draw.rectangle(spaceybox, width=linewidth_textbox, fill=(255, 255, 255, 128))
+
+        # draw label text
+        draw.text(textanchor, label, font=font, anchor="lt", fill="#323232")
 
     return image
