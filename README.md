@@ -13,7 +13,8 @@ You can use this repo to quickly create a live public(!) demo website for object
 Make sure that you do all your work in a region where App Runner is available (e.g. `eu-west-1` if you are based in Europe).
 
 ## Walk-Through Screen Recording
-to be recorded
+[Here](https://www.youtube.com/watch?v=y6bNoQvozu8) is an example of setting up a Cloud9 environment for your repo. Once that is up and running, feel free to follow along here:
+
 
 ## Docker Instructions
 
