@@ -15,6 +15,8 @@ Make sure that you do all your work in a region where App Runner is available (e
 ## Walk-Through Screen Recording
 [Here](https://www.youtube.com/watch?v=y6bNoQvozu8) is an example of setting up a Cloud9 environment for your repo. Once that is up and running, feel free to follow along here:
 
+[![Object Detection Demo (via FastAPI, AWS App Runner & Rekognition)](https://user-images.githubusercontent.com/3386410/215259808-86881c48-a7bf-4604-ad0a-be20394d1727.png)](https://www.youtube.com/watch?v=73Jx7qS393c)
+
 
 ## Docker Instructions
 
